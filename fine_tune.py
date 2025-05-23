@@ -23,9 +23,8 @@ from PIL import Image
 from huggingface_hub import login
 
 # 1. Set up paths and environment
-HF_TOKEN = "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"  
 # Get token from environment
-hf_token = os.getenv("HF_TOKEN")
+hf_token = os.getenv("HF_TOKEN") # this needs to be set from terminal as export HF_TOKEN = 'your_token_name'
 DATA_PATH = r"C:\Users\matte\Desktop"  # <- Your local dataset path
 LORA_TRAIN_DATA_DIR = os.path.join(DATA_PATH, 'kohya_train_data')
 OUTPUT_DIR = r"C:\Users\matte\Desktop\sd-finetuned-durer"
@@ -33,9 +32,9 @@ KOHYA_DIR = r"C:\kohya-sd-scripts"  # <- Where you clone the repo
 os.makedirs(LORA_TRAIN_DATA_DIR, exist_ok=True)
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# 2. Log in to HuggingFace
+# 2. Log in to HuggingFace 
 login(token=HF_TOKEN)
-"""
+
 # 3. Data augmentation
 import albumentations as A
 
@@ -66,8 +65,8 @@ for img_path in source_image_files:
     except Exception as e:
         print(f"Error processing {img_path}: {e}")
 
-print("✅ Data augmentation complete.")
-"""
+print("Data augmentation complete.")
+
 # 4. Run training via subprocess
 import subprocess
 train_script = os.path.join(KOHYA_DIR, "train_network.py")
