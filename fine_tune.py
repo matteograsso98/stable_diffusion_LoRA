@@ -109,7 +109,7 @@ cmd = [
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-print("🚀 Launching training...")
+print("Launching training...")
 env = os.environ.copy()
 env["PYTHONUNBUFFERED"] = "1"
 process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, env=env, encoding='utf-8', errors='replace')
@@ -118,4 +118,4 @@ for line in process.stdout:
     print(line, end='')
 
 process.wait()
-print("✅ Training complete." if process.returncode == 0 else "❌ Training failed.")
+print("Training complete." if process.returncode == 0 else "❌ Training failed.")
